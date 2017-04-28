@@ -1,0 +1,28 @@
+<div>
+  <h3>Welcome <%= @current_user.name %></h3>
+  <a href="/logout">Logout</a>
+</div>
+<div>
+  <form action="/ideas" method="post">
+    <input type="hidden" name="authenticity_token" value = "<%= form_authenticity_token %>">
+    <div>
+      <input type="textarea" name="idea[comment]" value="Post something witty here...." />
+      <input type="submit" name = "Idea!" />
+    </div>
+  </form>
+</div>
+<div>
+  <!-- area to display ideas posted in the DB -->
+
+
+  <% @ideas.each do |idea| %>
+    <p><a href="/users/<%= idea.user.id %>"><%= idea.user.name %></a> says: <%= idea.comment %> </p>
+    <p><a href="/likes/<%= idea.id %>" data-method = "post">Like</a>
+    <a href = "/ideas/<%= idea.id %>"><%= idea.likes.count %> people</a> like this.
+    </p>
+    <!-- delete option only if current user created idea -->
+    <% if idea.user == @current_user %>
+    <a href="/ideas/<%= idea.id %>" data-method="delete">Delete</a>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,12 @@
+<!-- User Profile Page -->
+<div>
+  <a href="/ideas">Home</a>
+  <a href="/logout">Logout</a>
+  <h4>Name: <%= @user.name %></h4>
+  <p>Alias: <%= @user.alias %></p>
+  <p>Email: <%= @user.email %></p>
+</div>
+<div>
+  <p>Total Number of Posts: <%= @user.ideas.count %></p>
+  <p>Total Number of Likes: <%= @user.likes.count %></p>
+</div>
