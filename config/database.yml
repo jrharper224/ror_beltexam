@@ -9,7 +9,7 @@ default: &default
   encoding: unicode
   username: ubuntu
   pool: 5
-  timeout: 5000
+
 
 development:
   <<: *default
